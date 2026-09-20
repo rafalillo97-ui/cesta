@@ -1,0 +1,17 @@
+Copyright (c) 2026 Rafael Pelegrina López de Hierro. Todos los derechos reservados.
+All rights reserved.
+
+«cesta.» — código, diseño, traducciones, bases de datos de alimentos y recetas,
+animaciones de ejercicios, textos e imágenes de este repositorio son obra
+protegida por la legislación de propiedad intelectual.
+
+Queda prohibida su copia, modificación, distribución, publicación, ingeniería
+inversa o uso comercial, total o parcial, sin autorización expresa y por escrito
+del titular. Que el contenido sea visible públicamente en este repositorio no
+supone la cesión de ninguna licencia ni derecho de uso.
+
+The code, design, translations, food and recipe databases, exercise animations,
+texts and images in this repository are protected works. Any copying,
+modification, distribution, reverse engineering or commercial use, in whole or in
+part, is prohibited without the express written permission of the rights holder.
+Public visibility of this repository does not grant any license or right of use.
