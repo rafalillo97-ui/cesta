@@ -10,7 +10,7 @@
 // internet igualmente — esto solo cubre que la app en sí (el HTML/CSS/JS)
 // aparezca de inmediato.
 
-const CACHE_NAME = 'cesta-shell-v3';
+const CACHE_NAME = 'cesta-shell-v6';
 // Los datos de cada idioma se piden aparte bajo /idiomas/ (ver ensureLangDataLoaded en
 // index.html) y no se precargaban aquí — la app funcionaba bien offline en general
 // porque el fetch handler de abajo va guardando en caché lo que se pide con éxito, pero
@@ -19,7 +19,10 @@ const CACHE_NAME = 'cesta-shell-v3';
 // tres listas siempre, sea cual sea el idioma activo, así que es el mínimo que hace
 // falta precargar para que ese primer arranque offline funcione.
 const SHELL_URLS = [
-  '/', '/index.html', '/manifest.json', '/icon-192.png', '/icon-512.png',
+  '/', '/index.html', '/manifest.json', '/icon-192.png', '/icon-512.png', '/fonts/fonts.css',
+  '/fonts/inter-latin-400-normal.woff2', '/fonts/inter-latin-500-normal.woff2', '/fonts/inter-latin-600-normal.woff2',
+  '/fonts/inter-latin-ext-400-normal.woff2', '/fonts/inter-latin-ext-500-normal.woff2', '/fonts/inter-latin-ext-600-normal.woff2',
+  '/fonts/space-grotesk-latin-500-normal.woff2', '/fonts/space-grotesk-latin-600-normal.woff2', '/fonts/space-grotesk-latin-700-normal.woff2',
   '/idiomas/PREGNANCY_EXERCISES_DATA/es.json',
   '/idiomas/BABY_ACTIVITIES_DATA/es.json',
   '/idiomas/FITNESS_SESSIONS_DATA/es.json',
