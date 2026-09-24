@@ -1,7 +1,7 @@
 {
   "name": "cesta.",
   "short_name": "cesta.",
-  "description": "Planificación de comidas, macros, entrenamiento y entrenadores.",
+  "description": "Nutrición, entrenamiento y entrenadores: +20.000 alimentos, planificador semanal automático, foto del plato con IA y más.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FAF8F5",
