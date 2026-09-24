@@ -10,7 +10,7 @@
 // internet igualmente — esto solo cubre que la app en sí (el HTML/CSS/JS)
 // aparezca de inmediato.
 
-const CACHE_NAME = 'cesta-shell-v19';
+const CACHE_NAME = 'cesta-shell-v21';
 // Los datos de cada idioma se piden aparte bajo /idiomas/ (ver ensureLangDataLoaded en
 // index.html) y no se precargaban aquí — la app funcionaba bien offline en general
 // porque el fetch handler de abajo va guardando en caché lo que se pide con éxito, pero
@@ -54,6 +54,28 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return; // no interceptamos llamadas a Supabase ni a terceros
+
+  // Tipografías y datos de idioma (traducciones de 20.000 alimentos, ~1 MB por idioma): casi
+  // nunca cambian, así que se sirven al instante desde la caché y se refrescan en segundo
+  // plano para la próxima vez. El HTML sigue siendo "red primero" (abajo) para que las
+  // versiones nuevas de la app lleguen enseguida.
+  if (url.pathname.startsWith('/fonts/') || url.pathname.startsWith('/idiomas/')) {
+    event.respondWith(
+      (async () => {
+        const cache = await caches.open(CACHE_NAME);
+        const cached = await cache.match(event.request);
+        const refresh = fetch(event.request).then((res) => {
+          if (res && res.ok) cache.put(event.request, res.clone()).catch(() => {});
+          return res;
+        }).catch(() => null);
+        if (cached) { event.waitUntil(refresh); return cached; }
+        const res = await refresh;
+        if (res) return res;
+        throw new Error('offline');
+      })()
+    );
+    return;
+  }
 
   event.respondWith(
     (async () => {
